@@ -1,4 +1,4 @@
-require('../settings');
+const { limitCount, limitPremium, TotalReq } = require('../lib/settings');
 const {
    User
 } = require('./schema');
