@@ -10,11 +10,3 @@ const Users = mongoose.Schema({
     limit: { type: Number }
 }, { versionKey: false });
 module.exports.User = mongoose.model('user', Users);
-
-const Utils = mongoose.Schema({
-    total: { type: Number },
-    today: { type: Number },
-    visitor: { type: Number },
-    util: { type: String }
-}, { versionKey: false });
-module.exports.Utils = mongoose.model('util', Utils);
