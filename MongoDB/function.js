@@ -43,7 +43,6 @@ async function checkEmail(email){
       return false;
    }
 }
-
 module.exports.checkEmail = checkEmail;
 
 async function checkUsername(username) {
