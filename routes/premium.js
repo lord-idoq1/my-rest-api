@@ -1,7 +1,7 @@
 require ("../settings");
 const express = require('express');
 const { checkUsername, resetAllLimit } = require('../MongoDB/function');
-const { addPremium, deletePremium, tokens, checkPremium, changeKey, resetOneLimit, resetTodayReq } = require('../database/premium');
+const { addPremium, deletePremium, tokens, checkPremium, changeKey, resetOneLimit } = require('../database/premium');
 const { isAuthenticated } = require('../lib/auth');
 const router = express.Router();
 
