@@ -6,6 +6,7 @@ global.ACTIVATION_TOKEN_SECRET = "-@Pqnap+@(/1jAPPnew/@10" //isi apa aja bebas
 global.your_email = "userbotido@gmail.com" //email
 global.email_password = "lcqzqkwqsmfkeftz" //application password email
 global.limitCount = 10
+global.limitPremium: 9999
 global.YUOR_PORT = 8000
 global.loghandler = {
 	noapikey:{
