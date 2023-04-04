@@ -48,16 +48,18 @@ app.set("json spaces",2)
 app.use(cors())
 app.use(secure)
 
+
+app.use(ignoreFavicon)
+app.use(express.static(path.join(__dirname, 'hasil')));
 app.use(session({
   secret: 'secret',  
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 86400000 },
   store: new MemoryStore({
-    checkPeriod: 86400000
+    checkPeriod: 86400000 // prune expired entries every 24h
   }),
 }));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -73,6 +75,12 @@ app.use(function(req, res, next) {
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
+  next();
+})
+
+app.use(function(req, res, next) {
+  getTotalUser()
+  addRequest();
   next();
 })
 
