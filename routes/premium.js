@@ -99,7 +99,7 @@ router.get('/limit', isAuthenticated, async  (req, res) => {
     let { username } = req.user
     if( username !=='Idoganz1')return res.redirect('/docs')
     res.render('premium/limit',  {
-        layout: 'layouts/main'
+        layout: 'index'
     });
 })
 
