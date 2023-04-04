@@ -4,7 +4,7 @@ global.creator = 'Idoganz'// yourname
 global.MONGO_DB_URI = "mongodb+srv://idoganz1:J9lPHqf1QXcspxqZ@cluster0.rurezke.mongodb.net/?retryWrites=true&w=majority" //database mongodb 
 global.ACTIVATION_TOKEN_SECRET = "-@Pqnap+@(/1jAPPnew/@10" //isi apa aja bebas
 global.your_email = "userbotido@gmail.com" //email
-global.email_password = "idoganz1" //application password email
+global.email_password = "lcqzqkwqsmfkeftz" //application password email
 global.limitCount = 10
 global.YUOR_PORT = 8000
 global.loghandler = {
