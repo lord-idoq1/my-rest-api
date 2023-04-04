@@ -9,7 +9,7 @@ router.get('/', isAuthenticated, async  (req, res) => {
     let { username } = req.user
     if( username !=='Idoganz1')return res.redirect('/docs')
     res.render('premium/index', {
-        layout: 'layouts/main'
+        layout: 'index'
     })
 })
 
@@ -17,7 +17,7 @@ router.get('/add', isAuthenticated, async  (req, res) => {
     let { username } = req.user
     if( username !=='Idoganz1')return res.redirect('/docs')
     res.render('premium/add',  {
-        layout: 'layouts/main'
+        layout: 'index'
     });
 });
 
@@ -48,7 +48,7 @@ router.get('/delete', isAuthenticated, async  (req, res) => {
     let { username } = req.user
     if( username !=='Idoganz1')return res.redirect('/docs')
     res.render('premium/delete',  {
-        layout: 'layouts/main'
+        layout: 'index'
     });
 });
 
