@@ -1,6 +1,6 @@
+require ("../settings");
 const { User } = require('../MongoDB/schema');
 const toMs = require('ms');
-const { limitCount, limitPremium } = require('../settings');
 const tokens = 'helena'
 module.exports.tokens = tokens
 
