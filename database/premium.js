@@ -1,4 +1,4 @@
-const { User, Utils } = require('../Mongodb/schema');
+const { User, Utils } = require('../MongoDB/schema');
 const toMs = require('ms');
 const { limitCount, limitPremium } = require('../settings');
 const tokens = 'helena'
