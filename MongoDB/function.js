@@ -10,6 +10,7 @@ async function addUser(username, email, password, apikey) {
       password,
       apikey,
       defaultKey: apikey,
+      premium: null,
       limit: limitCount
    };
    User.create(obj);
