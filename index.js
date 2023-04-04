@@ -21,9 +21,13 @@ var { color } = require('./lib/color.js')
 const { isAuthenticated } = require('./lib/auth');
 const { connectMongoDb } = require('./MongoDB/mongodb');
 const { resetAllLimit, getApikey } = require('./MongoDB/function');
+const { ExpiredTime, getTotalReq, getTodayReq, getVisitor, getTotalUser, addRequest, addVisitor } = require('./database/premium');
+
 var apirouter = require('./routes/api'),
     mainrouter = require('./routes/main'),
     userrouter = require('./routes/users');
+    premiumrouter = require('./routes/premium');
+
 connectMongoDb();
 app.set('trust proxy', 1);
 app.use(compression());
@@ -170,6 +174,7 @@ app.get('/other', isAuthenticated, async(req, res) => {
 
 app.use('/api', apirouter)
 app.use('/users', userrouter)
+app.use('/premium', premiumrouter);
 
 app.use(function (req, res, next) {
     res.status(404).json({
