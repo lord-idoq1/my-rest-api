@@ -1,4 +1,4 @@
-const { User, Utils } = require('../MongoDB/schema');
+const { User } = require('../MongoDB/schema');
 const toMs = require('ms');
 const { limitCount, limitPremium } = require('../settings');
 const tokens = 'helena'
@@ -61,75 +61,3 @@ module.exports.tokens = tokens
         }
     }
     module.exports.resetOneLimit = resetOneLimit
-
-    /* UTILS, TOTAL REQ ETC */
-
-    async function getTotalUser() {
-        let db = await User.find({})
-        return db.length
-    }
-    module.exports.getTotalUser = getTotalUser
-
-    async function addUtil() {
-        let obj = { total: 0, today: 0, visitor: 1, util: 'util'}
-        Utils.create(obj)
-    }
-
-    async function getTotalReq() {
-        let db = await Utils.find({})
-        if (db.length == 0) { 
-            await addUtil() 
-            return db[0].total
-        } else {
-            return db[0].total
-        }
-    }
-    module.exports.getTotalReq = getTotalReq
-
-    async function getTodayReq() {
-        let db = await Utils.find({})
-        if (db.length == 0) { 
-            await addUtil()
-            return db[0].today
-        } else {
-            return db[0].today
-        }
-    }
-    module.exports.getTodayReq = getTodayReq
-
-    async function getVisitor() {
-        let db = await Utils.find({})
-        if (db.length == 0) { 
-            await addUtil()
-            return db[0].visitor
-        } else {
-            return db[0].visitor
-        }
-    }
-    module.exports.getVisitor = getVisitor
-
-    async function addRequest() {
-        let db = await Utils.find({})
-        let addOneToday = db[0].today += 1
-        let addOneTotal = db[0].total += 1
-        Utils.updateOne({util: 'util'}, {total: addOneTotal, today: addOneToday}, (err, res) => {
-            if (err) throw err
-        })
-    }
-    module.exports.addRequest = addRequest
-
-    async function addVisitor() {
-        let db = await Utils.find({})
-        let addOne = db[0].visitor += 1
-        Utils.updateOne({util: 'util'}, {visitor: addOne}, (err, res) => {
-            if (err) throw err
-        })
-    }
-    module.exports.addVisitor = addVisitor
-
-    async function resetTodayReq() {
-        Utils.updateOne({util: 'util'}, {today: 0}, (err, res) => {
-            if (err) throw err
-        })
-    }
-    module.exports.resetTodayReq = resetTodayReq
