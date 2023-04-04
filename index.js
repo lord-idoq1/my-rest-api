@@ -77,18 +77,27 @@ app.use(function(req, res, next) {
 })
 
 app.get('/', (req, res) => {
+addVisitor()
     res.render('home', {
     layout: 'home'
   });
 })
 app.get('/docs', isAuthenticated, async(req, res) => {
   let getkey = await getApikey(req.user.id)
+  let total = await getTotalReq()
+  let today = await getTodayReq()
+  let visitor = await getVisitor()
+  let userTotal = await getTotalUser()
   let { apikey, username, limit} = getkey
   res.render('index', {
-    apikey,
-    username,
-    limit,
-    layout: 'index'
+    limit: limit,
+    total: total,
+    today,
+    visitor,
+    userTotal,
+    username: username,
+    apikey: apikey,
+    layout: 'layouts/main'
   });
 })
 app.get('/cecan', isAuthenticated, async(req, res) => {
@@ -174,7 +183,7 @@ app.get('/other', isAuthenticated, async(req, res) => {
 
 app.use('/api', apirouter)
 app.use('/users', userrouter)
-app.use('/premium', premiumrouter);
+app.use('/premium', premiumrouter)
 
 app.use(function (req, res, next) {
     res.status(404).json({
